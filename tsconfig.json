@@ -16,6 +16,11 @@
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "name": "gql.tada/ts-plugin",
+        "schema": "https://readonlydemo.vendure.io/shop-api",
+        "tadaOutputLocation": "./src/graphql-env.d.ts"
       }
     ],
     "paths": {

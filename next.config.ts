@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    images: {
+        remotePatterns: [{
+            hostname: 'readonlydemo.vendure.io',
+        }]
+    }
 };
 
 export default nextConfig;
