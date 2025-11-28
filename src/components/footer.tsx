@@ -1,4 +1,5 @@
 import {getTopCollections} from '@/lib/collections';
+import Image from "next/image";
 import Link from "next/link";
 
 
@@ -93,7 +94,7 @@ export async function Footer() {
                             rel="noopener noreferrer"
                             className="hover:text-foreground transition-colors"
                         >
-                            Vendure
+                            <Image src="/vendure.svg" alt="Vendure" width={40} height={27} className="h-4 w-auto" />
                         </a>
                         <span>&</span>
                         <a
@@ -102,7 +103,7 @@ export async function Footer() {
                             rel="noopener noreferrer"
                             className="hover:text-foreground transition-colors"
                         >
-                            Next.js
+                            <Image src="/next.svg" alt="Next.js" width={16} height={16} className="h-5 w-auto" />
                         </a>
                     </div>
                 </div>
