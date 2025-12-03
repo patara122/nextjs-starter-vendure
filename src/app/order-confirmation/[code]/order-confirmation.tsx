@@ -148,7 +148,7 @@ export async function OrderConfirmation({params}: PageProps<'/order-confirmation
 
                 <div className="flex gap-4">
                     <Button asChild className="flex-1">
-                        <Link href="/public">Continue Shopping</Link>
+                        <Link href="/">Continue Shopping</Link>
                     </Button>
                 </div>
             </div>
