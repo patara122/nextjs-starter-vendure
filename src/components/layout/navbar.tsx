@@ -25,11 +25,11 @@ export function Navbar() {
                         </nav>
                     </div>
                     <div className="flex items-center gap-4">
-                        <div className="hidden lg:flex">
+                        {/* <div className="hidden lg:flex"> */}
                             <Suspense fallback={<SearchInputSkeleton />}>
                                 <SearchInput/>
                             </Suspense>
-                        </div>
+                        {/* </div> */}
                         <ThemeSwitcher />
                         <Suspense>
                             <NavbarCart/>
