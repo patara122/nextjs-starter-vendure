@@ -61,6 +61,19 @@ export const GetProductDetailQuery = graphql(`
                 sku
                 priceWithTax
                 stockLevel
+                customFields {
+                    SupplierSKU
+                    NewSKU
+                    Barcode
+                    Additionalinfo{
+                        Brand
+                        PackingUnit
+                        Width
+                        Depth
+                        Height
+                        Weight
+                    }    
+                }
                 options {
                     id
                     code
