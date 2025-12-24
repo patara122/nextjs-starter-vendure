@@ -1,9 +1,9 @@
 'use client';
 
-import {useState, useEffect, useTransition} from 'react';
-import {useRouter, useSearchParams} from 'next/navigation';
-import {Search} from 'lucide-react';
-import {Input} from '@/components/ui/input';
+import { useState, useEffect, useTransition } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 export function SearchInput() {
     const router = useRouter();
@@ -23,11 +23,11 @@ export function SearchInput() {
 
     return (
         <form onSubmit={handleSubmit} className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"/>
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
                 type="search"
-                placeholder="Search products..."
-                className="pl-9 w-64"
+                placeholder="ค้นหาสินค้า ..."
+                className="pl-9 w-80"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 disabled={isPending}

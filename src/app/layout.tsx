@@ -1,20 +1,28 @@
-import type {Metadata, Viewport} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist_Mono, Geist, Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
-import {Toaster} from "@/components/ui/sonner";
-import {Navbar} from "@/components/layout/navbar";
-import {Footer} from "@/components/layout/footer";
-import {ThemeProvider} from "@/components/providers/theme-provider";
-import {SITE_NAME, SITE_URL} from "@/lib/metadata";
+import { Toaster } from "@/components/ui/sonner";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { SITE_NAME, SITE_URL } from "@/lib/metadata";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
+const NotoSansThai = Noto_Sans_Thai({
+    variable: "--font-noto-sans-thai",
+    subsets: ["thai"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
+const GeistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const GeistSans = Geist({
+    variable: "--font-geist",
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -51,16 +59,16 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 5,
     themeColor: [
-        {media: "(prefers-color-scheme: light)", color: "#ffffff"},
-        {media: "(prefers-color-scheme: dark)", color: "#000000"},
+        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+        { media: "(prefers-color-scheme: dark)", color: "#000000" },
     ],
 };
 
-export default function RootLayout({children}: LayoutProps<'/'>) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+                className={`${NotoSansThai.variable} ${GeistMono.variable} ${GeistSans.variable} font-sans antialiased flex flex-col min-h-screen`}
             >
                 <ThemeProvider>
                     <Navbar />

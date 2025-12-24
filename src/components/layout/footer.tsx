@@ -1,5 +1,5 @@
-import {cacheLife} from 'next/cache';
-import {getTopCollections} from '@/lib/vendure/cached';
+import { cacheLife } from 'next/cache';
+import { getTopCollections } from '@/lib/vendure/cached';
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ async function Copyright() {
 
     return (
         <div>
-            © {new Date().getFullYear()} Vendure Store. All rights reserved.
+            © {new Date().getFullYear()} HHH Store. All rights reserved.
         </div>
     )
 }
@@ -87,8 +87,8 @@ export async function Footer() {
                 {/* Bottom Section */}
                 <div
                     className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-                    <Copyright/>
-                    <div className="flex items-center gap-2">
+                    <Copyright />
+                    {/* <div className="flex items-center gap-2">
                         <span>Powered by</span>
                         <a
                             href="https://vendure.io"
@@ -107,7 +107,7 @@ export async function Footer() {
                         >
                             <Image src="/next.svg" alt="Next.js" width={16} height={16} className="h-5 w-auto dark:invert" />
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </footer>
