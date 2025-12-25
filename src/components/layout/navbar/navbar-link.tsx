@@ -1,24 +1,24 @@
 'use client';
 
-import {useSelectedLayoutSegment} from 'next/navigation';
-import {ComponentProps} from 'react';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { ComponentProps } from 'react';
 import Link from 'next/link';
 import {
     NavigationMenuLink,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import {cn} from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
-export function NavbarLink({href, ...rest}: ComponentProps<typeof Link>) {
+export function NavbarLink({ href, ...rest }: ComponentProps<typeof Link>) {
     const selectedLayoutSegment = useSelectedLayoutSegment();
     const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : '/';
     const isActive = pathname === href;
 
     return (
-        <NavigationMenuLink asChild active={isActive}>
+        <NavigationMenuLink asChild active={isActive} className="text-base">
             <Link
                 aria-current={isActive ? 'page' : undefined}
-                className={cn(navigationMenuTriggerStyle())}
+                className={cn(navigationMenuTriggerStyle(), 'text-base')}
                 href={href}
                 {...rest}
             />

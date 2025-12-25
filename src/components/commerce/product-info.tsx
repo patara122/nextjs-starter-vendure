@@ -60,6 +60,15 @@ interface ProductInfoProps {
     searchParams: { [key: string]: string | string[] | undefined };
 }
 
+const fieldLabels: Record<string, string> = {
+    Brand: 'แบรนด์',
+    PackingUnit: 'หน่วยบรรจุ',
+    Width: 'ความกว้าง (mm)',
+    Depth: 'ความลึก (mm)',
+    Height: 'ความสูง (mm)',
+    Weight: 'น้ำหนัก (g)',
+};
+
 export function ProductInfo({ product, searchParams }: ProductInfoProps) {
     const pathname = usePathname();
     const router = useRouter();
@@ -258,7 +267,7 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
                                 {Object.entries(selectedVariant.customFields.Additionalinfo).map(([key, value]) => (
                                     value ? (
                                         <tr key={key}>
-                                            <td className="px-4 py-3 font-medium text-muted-foreground w-1/3 bg-muted/30">{key}</td>
+                                            <td className="px-4 py-3 font-medium text-muted-foreground w-1/3 bg-muted/30">{fieldLabels[key] || key}</td>
                                             <td className="px-4 py-3">{value}</td>
                                         </tr>
                                     ) : null
