@@ -5,35 +5,27 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { ShoppingCart, CheckCircle2 } from 'lucide-react';
+import { ShoppingCart, CheckCircle2, Link } from 'lucide-react';
 import { addToCart } from '@/app/product/[slug]/actions';
 import { toast } from 'sonner';
 import { Price } from '@/components/commerce/price';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface ProductInfoProps {
     product: {
         id: string;
         name: string;
         description: string;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        customFields?: any;
         variants: Array<{
             id: string;
             name: string;
             sku: string;
             priceWithTax: number;
             stockLevel: string;
-            customFields: {
-                SupplierSKU: string;
-                NewSKU: string;
-                Barcode: string;
-                Additionalinfo: {
-                    Brand: string;
-                    PackingUnit: string;
-                    Width: number;
-                    Depth: number;
-                    Height: number;
-                    Weight: number;
-                };
-            };
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            customFields?: any;
             options: Array<{
                 id: string;
                 code: string;
@@ -170,7 +162,7 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
             </div>
 
             {/* Product Description */}
-            <div className="prose prose-sm max-w-none">
+            <div className="prose prose-m max-w-none">
                 <div dangerouslySetInnerHTML={{ __html: product.description }} />
             </div>
 
@@ -209,7 +201,7 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
                 </div>
             )}
 
-            {/* Stock Status */}
+            {/* Stock Status
             {selectedVariant && (
                 <div className="text-sm">
                     {isInStock ? (
@@ -218,7 +210,7 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
                         <span className="text-destructive font-medium">Out of Stock</span>
                     )}
                 </div>
-            )}
+            )} */}
 
             {/* Add to Cart Button
             <div className="pt-4">
@@ -250,31 +242,70 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
 
             {/* SKU */}
             {selectedVariant && (
-                <div className="text-xs text-muted-foreground">
+                <div className="text-m text-muted-foreground">
                     SKU: {selectedVariant.sku}
                     <br />
                     SupplierSKU: {selectedVariant.customFields?.SupplierSKU}
+                    <br />
+                    Barcode: {selectedVariant.customFields?.Barcode}
                 </div>
             )}
 
             {/* Additional Info */}
-            {selectedVariant?.customFields?.Additionalinfo && (
+            {/* Product Tabs */}
+            {(selectedVariant?.customFields?.Additionalinfo || (product.customFields?.infoUrls && product.customFields.infoUrls.length > 0)) && (
                 <div className="mt-8 pt-6 border-t">
-                    <h3 className="text-sm font-semibold mb-3">รายละเอียดเพิ่มเติม</h3>
-                    <div className="border rounded-md overflow-hidden">
-                        <table className="w-full text-sm">
-                            <tbody className="divide-y">
-                                {Object.entries(selectedVariant.customFields.Additionalinfo).map(([key, value]) => (
-                                    value ? (
-                                        <tr key={key}>
-                                            <td className="px-4 py-3 font-medium text-muted-foreground w-1/3 bg-muted/30">{fieldLabels[key] || key}</td>
-                                            <td className="px-4 py-3">{value}</td>
-                                        </tr>
-                                    ) : null
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                    <Tabs defaultValue="details" className="w-full">
+                        <TabsList className="w-full justify-start">
+                            {selectedVariant?.customFields?.Additionalinfo && (
+                                <TabsTrigger value="details">ข้อมูลจำเพาะ</TabsTrigger>
+                            )}
+                            {product.customFields?.infoUrls && product.customFields.infoUrls.length > 0 && (
+                                <TabsTrigger value="info-urls">ลิงก์เพิ่มเติม</TabsTrigger>
+                            )}
+                        </TabsList>
+
+                        {/* Additional Info Tab Content */}
+                        {selectedVariant?.customFields?.Additionalinfo && (
+                            <TabsContent value="details" className="mt-4">
+                                <div className="border rounded-md overflow-hidden">
+                                    <table className="w-full text-sm">
+                                        <tbody className="divide-y">
+                                            {Object.entries(selectedVariant.customFields.Additionalinfo).map(([key, value]) => (
+                                                value ? (
+                                                    <tr key={key}>
+                                                        <td className="px-4 py-3 font-medium text-muted-foreground w-1/3 bg-muted/30">{fieldLabels[key] || key}</td>
+                                                        <td className="px-4 py-3">{value as React.ReactNode}</td>
+                                                    </tr>
+                                                ) : null
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </TabsContent>
+                        )}
+
+                        {/* Info URLs Tab Content */}
+                        {product.customFields?.infoUrls && product.customFields.infoUrls.length > 0 && (
+                            <TabsContent value="info-urls" className="mt-4">
+                                <ul className="space-y-2">
+                                    {product.customFields.infoUrls.map((url: string, index: number) => (
+                                        <li key={index}>
+                                            <a
+                                                href={url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center text-sm text-blue-600 hover:underline"
+                                            >
+                                                <Link className="w-4 h-4 mr-2" />
+                                                ข้อมูลจากซัพพลายเออร์
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </TabsContent>
+                        )}
+                    </Tabs>
                 </div>
             )}
         </div>

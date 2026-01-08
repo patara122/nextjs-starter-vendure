@@ -1,7 +1,7 @@
-import type {Metadata} from "next";
-import {HeroSection} from "@/components/layout/hero-section";
-import {FeaturedProducts} from "@/components/commerce/featured-products";
-import {SITE_NAME, SITE_URL, buildCanonicalUrl} from "@/lib/metadata";
+import type { Metadata } from "next";
+import { HeroSection } from "@/components/layout/hero-section";
+import { FeaturedProducts } from "@/components/commerce/featured-products";
+import { SITE_NAME, SITE_URL, buildCanonicalUrl } from "@/lib/metadata";
 
 export const metadata: Metadata = {
     title: {
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
 export default async function Home(_props: PageProps<'/'>) {
     return (
         <div className="min-h-screen">
-            <HeroSection/>
-            <FeaturedProducts/>
+            <HeroSection />
+            <FeaturedProducts />
 
             {/* You can add more sections here */}
-            <section className="py-16 bg-muted/30">
+            {/* <section className="py-16 bg-muted/30">
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-3 gap-8 text-center">
                         <div className="space-y-3">
@@ -69,7 +69,7 @@ export default async function Home(_props: PageProps<'/'>) {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </div>
     );
 }

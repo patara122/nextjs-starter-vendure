@@ -65,7 +65,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function ProductDetailPage({params, searchParams}: PageProps<'/product/[slug]'>) {
+export default async function ProductDetailPage({ params, searchParams }: PageProps<'/product/[slug]'>) {
     const { slug } = await params;
     const searchParamsResolved = await searchParams;
 
@@ -97,7 +97,7 @@ export default async function ProductDetailPage({params, searchParams}: PageProp
             </div>
 
             {/* Product Benefits Section */}
-            <section className="py-16 bg-muted/30 mt-12">
+            {/* <section className="py-16 bg-muted/30 mt-12">
                 <div className="container mx-auto px-4">
                     <h2 className="text-2xl font-bold text-center mb-8">Why Choose Us</h2>
                     <div className="grid md:grid-cols-3 gap-8 text-center">
@@ -130,10 +130,10 @@ export default async function ProductDetailPage({params, searchParams}: PageProp
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Store FAQ Section */}
-            <section className="py-16 bg-muted/30">
+            {/* <section className="py-16 bg-muted/30">
                 <div className="container mx-auto px-4 max-w-3xl">
                     <h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
                     <Accordion type="single" collapsible className="w-full">
@@ -163,7 +163,7 @@ export default async function ProductDetailPage({params, searchParams}: PageProp
                         </AccordionItem>
                     </Accordion>
                 </div>
-            </section>
+            </section> */}
 
             {primaryCollection && (
                 <RelatedProducts

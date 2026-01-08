@@ -55,6 +55,10 @@ export const GetProductDetailQuery = graphql(`
                 preview
                 source
             }
+            customFields {
+                infoUrls
+            }
+
             variants {
                 id
                 name

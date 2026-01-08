@@ -1,4 +1,4 @@
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -7,19 +7,19 @@ export function HeroSection() {
             <div className="container mx-auto px-4 py-24 md:py-32">
                 <div className="max-w-4xl mx-auto text-center space-y-8">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2">
-                        E-Commerce Starter Template
+                        เครื่องมือช่างคุณภาพสูง
                     </h1>
                     <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-                        Powered by Vendure and Next.js
+                        จากหลากหลายแบรนด์
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                         <Button asChild size="lg" className="min-w-[200px]">
                             <Link href="/search">
-                                Shop Now
+                                ดูสินค้า
                             </Link>
                         </Button>
                         <Button asChild variant="outline" size="lg" className="min-w-[200px]">
-                            <a href="https://github.com/vendure-ecommerce/nextjs-starter-vendure" target="_blank"
+                            {/* <a href="https://github.com/vendure-ecommerce/nextjs-starter-vendure" target="_blank"
                                rel="noopener noreferrer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1024 1024">
                                     <path fill="currentColor" fillRule="evenodd"
@@ -27,7 +27,7 @@ export function HeroSection() {
                                           clipRule="evenodd"/>
                                 </svg>
                                 View on GitHub
-                            </a>
+                            </a> */}
                         </Button>
                     </div>
                 </div>
